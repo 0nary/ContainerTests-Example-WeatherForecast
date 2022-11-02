@@ -32,7 +32,7 @@ public sealed class WeatherForecastImage : IDockerImage, IAsyncLifetime
       _ = await new ImageFromDockerfileBuilder()
         .WithName(this)
         .WithDockerfileDirectory(CommonDirectoryPath.GetSolutionDirectory(), string.Empty)
-        .WithDockerfile("src\\WeatherForecast\\Dockerfile")
+        .WithDockerfile("src/WeatherForecast/Dockerfile")
         .WithBuildArgument("RESOURCE_REAPER_SESSION_ID", ResourceReaper.DefaultSessionId.ToString("D")) // https://github.com/testcontainers/testcontainers-dotnet/issues/602.
         .WithDeleteIfExists(false)
         .Build()
