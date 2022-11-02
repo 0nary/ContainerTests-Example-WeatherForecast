@@ -40,7 +40,7 @@ public sealed class WeatherForecastImage : IDockerImage, IAsyncLifetime
     }
     catch (Exception ex)
     {
-
+      throw;
     }
     finally
     {
