@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using DotNet.Testcontainers.Builders;
@@ -32,11 +32,15 @@ public sealed class WeatherForecastImage : IDockerImage, IAsyncLifetime
       _ = await new ImageFromDockerfileBuilder()
         .WithName(this)
         .WithDockerfileDirectory(CommonDirectoryPath.GetSolutionDirectory(), string.Empty)
-        .WithDockerfile("Dockerfile")
+        .WithDockerfile("src\\WeatherForecast\\Dockerfile")
         .WithBuildArgument("RESOURCE_REAPER_SESSION_ID", ResourceReaper.DefaultSessionId.ToString("D")) // https://github.com/testcontainers/testcontainers-dotnet/issues/602.
         .WithDeleteIfExists(false)
         .Build()
         .ConfigureAwait(false);
+    }
+    catch (Exception ex)
+    {
+
     }
     finally
     {
